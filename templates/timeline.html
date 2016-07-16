@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timeline</title>
+</head>
+<body>
+    <!-- 这里的 none 是小写，因为这是 jinja2 模板的语法-->
+    {% if user is not none %}
+    <form class="pure-form" action="/tweet/add" method="POST">
+        <textarea name="content" class="form-control" placeholder="说点啥"></textarea>
+        <br>
+        <button class="pure-button pure-button-primary" type="submit">发新微博</button>
+    </form>
+    {% endif %}
+
+    {% for t in tweets %}
+        <p>
+            {{ t.created_time }} : {{ t.content }}
+            <a href="/tweet/update/{{t.id}}">编辑</a>
+            <a href="/tweet/delete/{{t.id}}">删除</a>
+            <!-- /tweet/delete/1 -->
+        </p>
+    {% endfor %}
+</body>
+</html>

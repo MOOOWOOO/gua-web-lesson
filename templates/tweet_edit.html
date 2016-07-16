@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改微博</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+    <form class="pure-form"  action="/tweet/update/{{ tweet.id }}" method="POST">
+        <input name="content" class="form-control" placeholder="{{ tweet.content }}" />
+        <button class="pure-button pure-button-primary" type="submit">修改</button>
+    </form>
+</body>
+</html>
