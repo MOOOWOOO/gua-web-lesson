@@ -155,6 +155,25 @@ def profile_view():
         return redirect(url_for('login_view'))
 
 
+@app.route('/user/<username>')
+def profile(username):
+    cookie_id = request.cookies.get('cookie_id')
+    if cookie_id in cookie_dict:
+        msgs = []
+        _username = cookie_dict.get(cookie_id, None)
+        if username == _username:
+            for item in messages:
+                if item['name'] == username:
+                    msgs.append(item)
+                else:
+                    pass
+        else:
+            pass
+        return render_template('message.html', msgs=msgs)
+    else:
+        return redirect(url_for('login_view'))
+
+
 if __name__ == '__main__':
     # debug 模式可以自动加载你对代码的变动, 所以不用重启程序
     debug = True
